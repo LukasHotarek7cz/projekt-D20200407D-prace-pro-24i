@@ -1,0 +1,37 @@
+
+
+
+*{
+	border-width:0px;
+	border-style:solid;
+	border-color: #ffffff;
+}
+
+
+a:visited{
+	/*color:#551a8b; /*DEFAULT*/
+	/*color:#aae574; /*NEGATIV*/
+	/*color:#af74e5; */
+	color:#c98eff;
+}
+
+a:link{
+	/*color:#0000ee; /*DEFAULT*/
+	/*color:#ffff11; /*NEGATIV*/
+	color:#1111ff;
+}
+
+
+html, body{
+	background-color:#000000;
+	color:#ffffff;
+}
+
+img{
+	background-color:#ffffff;
+	color:#000000;
+}
+
+canvas{
+	background-color: #ffffff;
+}
