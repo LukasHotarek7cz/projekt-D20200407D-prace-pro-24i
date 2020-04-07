@@ -69,6 +69,54 @@ document.querySelectorAll("button.Search").forEach(function(e1){
 		
 		
 		
+		// AJAX
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var t2 = "";
+				
+				t2 += "<table>";
+				
+				// JSON parse
+				var responseJSON = JSON.parse(this.responseText);
+				
+				// DEBUG
+				R1 = this.responseText;
+				R2 = responseJSON;
+				
+				// build HTML Find Text
+				responseJSON.items.forEach(function(e1){
+					var src1 = e1.pagemap;
+					if(typeof(src1) != "undefined"){
+						src1 = src1.cse_image;
+					if(typeof(src1) != "undefined" && src1.length > 0){
+						src1 = src1[0].src;
+					if(typeof(src1) != "undefined"){
+					if((/.*(\.png)|(\.jpg)/i).test(src1)){
+						t2 += "<tr><td>";
+						t2 += "<a href=\"";
+						t2 += e1.link;
+						t2 += "\" >";
+						t2 += "<img src=\"";
+						t2 += src1;
+						t2 += "\" />";
+						t2 += "</a>";
+						t2 += "<br>";
+						t2 += "</td></tr>";
+					}}}}
+					
+				});
+				
+				// write to HTML
+				t2 += "</table>";
+				document.querySelector("#FoundImages").innerHTML = t2;
+			}
+		};
+		// AJAX
+		xhttp.open("GET", "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + GlobalSearchText + "", true);
+		xhttp.send();
+		
+		
 		
 		
 	});
